@@ -10,19 +10,19 @@
     <style>
         /* These are the light mode colours */
         :root {
-            --background: #f9fafb;
-            --surface: #ffffff;
+            --background: pink;
+            --surface: pink;
             --text: #111827;
-            --muted: #6b7280;
+            --muted: #111827;
             --accent: #4f46e5;
-            --border: #e5e7eb;
+            --border: #111827;
         }
 
         /* These colours are used in dark mode */
         body.dark {
             --background: #111827;
             --surface: #1f2937;
-            --text: #f9fafb;
+            --text: pink;
             --muted: #9ca3af;
             --accent: #a5b4fc;
             --border: #374151;
@@ -100,7 +100,7 @@
             font-size: clamp(1.5rem, 3vw, 2.5rem);
            }
 
-         p {
+         p, ul {
             font-size: clamp(1rem, 1.5vw, 1.25rem);color: var(--muted);line-height: 1.7;
            }
 
@@ -188,7 +188,7 @@
             <p>
 			  <ul>
 			  <li>Improving state in micro-scale inference systems</li>
-			  <li>Air-gapping Inference Systems with minimal function losses</li>
+			  <li>Air-gapping inference systems with minimal function losses</li>
 			  <li>Left-field alternatives and improvements for the current differential architecture.</li>
 			</ul>
             </p>
