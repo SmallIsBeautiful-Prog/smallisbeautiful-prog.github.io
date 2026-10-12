@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Small Is Beautiful : Prog</title>
+
+    <style>
+        /* These are the light mode colours */
+        :root {
+            --background: #f9fafb;
+            --surface: #ffffff;
+            --text: #111827;
+            --muted: #6b7280;
+            --accent: #4f46e5;
+            --border: #e5e7eb;
+        }
+
+        /* These colours are used in dark mode */
+        body.dark {
+            --background: #111827;
+            --surface: #1f2937;
+            --text: #f9fafb;
+            --muted: #9ca3af;
+            --accent: #a5b4fc;
+            --border: #374151;
+        }
+
+        /* Basic page styling */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light;
+        }
+
+        html:has(body.dark) {
+            color-scheme: dark;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+            min-height: 100vh;
+        }
+
+        /* The top navigation bar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            border-color: var(--accent);
+        }
+
+        /* The main welcome section */
+        main {
+            max-width: 850px;
+            margin: 100px auto;
+            padding: 0 24px;
+        }
+
+        .tag {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 7vw, 64px);
+            margin: 20px 0;
+        }
+
+        p {
+            color: var(--muted);
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .link-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 20px;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link-button:hover {
+            opacity: 0.85;
+        }
+
+        /* A small information card */
+        .card {
+            margin-top: 55px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--surface);
+        }
+
+        footer {
+            padding: 24px;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        /* Make the layout comfortable on phones */
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 20px;
+            }
+
+            main {
+                margin: 60px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!-- Website name -->
+        <div class="logo">Small Is Beautiful : Prog</div>
+
+        <!-- This button switches between light and dark mode -->
+        <button id="theme-toggle" type="button"
+                aria-label="Switch colour theme">
+            🌙 Dark mode
+        </button>
+    </header>
+
+    <main>
+        <div class="tag">WELCOME</div>
+
+        <h1>About</h1>
+
+        <p>
+            Welcome to my site.<br/>
+			I will be adding information on:
+			<ul>
+			  <li>my projects</li>
+			  <li>ideas</li>
+			  <li>interests</li>
+			</ul>
+        </p>
+
+        <!-- Links will be added -->
+        <a class="link-button" href="#about">
+            Explore my site ↗
+        </a>
+
+        <section class="card" id="about">
+            <h2>Current Coding Interests</h2>
+
+            <p>
+			  <ul>
+			  <li>Improving state in micro-scale inference systems</li>
+			  <li>Air-gapping Inference Systems with minimal functions losses</li>
+			  <li>Left-field alternatives and improvements for the current differential architecture.</li>
+			</ul>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        Made with HTML, CSS & JavaScript · Hosted on GitHub Pages
+    </footer>
+
+    <script>
+        // Find the theme button
+        const themeButton = document.getElementById("theme-toggle");
+
+        // Load the saved theme, or use light mode by default
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark");
+        }
+
+        // Update the button text to match the current theme
+        function updateButton() {
+            if (document.body.classList.contains("dark")) {
+                themeButton.textContent = "☀️ Light mode";
+            } else {
+                themeButton.textContent = "🌙 Dark mode";
+            }
+        }
+
+        // Set the correct button label when the page loads
+        updateButton();
+
+        // Switch themes whenever the button is clicked
+        themeButton.addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+
+            // Remember the selected theme in this browser
+            if (document.body.classList.contains("dark")) {
+                localStorage.setItem("theme", "dark");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+
+            updateButton();
+        });
+    </script>
+
+</body>
+</html>
